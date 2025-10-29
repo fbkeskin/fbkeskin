@@ -72,61 +72,33 @@ Error: Invalid Argument Input!
   ```bash
   $>pkgtool install HexChat
   ```
-  Ardından HexChat arayüzünde gerekli ayarları gerçekleştirip connect olun.
+  **5.** Ardından HexChat arayüzünde gerekli ayarları gerçekleştirip connect olun.
   
   <img width="300" height="400" alt="Screenshot from 2025-10-29 14-50-11" src="https://github.com/user-attachments/assets/4bf2f0da-865b-47a0-8a0a-dd026e0a01bd" />
+    <br>
+  
+**6.** Bağlantı ardından PASS, NICk ve USER komutu ile server'a register olun.
 
-
-## 📚MLX
-MinilibX, öğrenciler için tasarlanmış, yeni başlayanlara uygun, C dilinde basit bir X-Window programlama API'sidir.<br>
-
-Useful links:
-* [Lode's Raycasting Document](https://lodev.org/cgtutor/raycasting.html)
-* [Dounia's Medium Blogpost](https://medium.com/@rtailidounia/raycasting-in-cub3d-42-network-project-a-practical-tutorial-using-vectors-68eeb16b3de2)
-* [Harm Smits - MiniLibX](https://harm-smits.github.io/42docs/libs/minilibx)
-* [MiniLibX](https://github.com/42Paris/minilibx-linux)
-* [Laura&Simon Gitbook](https://42-cursus.gitbook.io/guide/minilibx)
-
-
-## 🎮CONTROLS
-|KEYBOARD|ACTION|
-|---|---|
-|`W`|Move up|
-|`S`|Move down|
-|`A`|Move left|
-|`D`|Move right|
-|`>`|Rotate right|
-|`<`|Rotate left|
-|`ESC`, `❌`|Close the game window|
-
-
-# 💬 ft_irc: Internet Relay Chat (IRC)
-
-## ✨ Proje Özeti
-
-**ft_irc**, köklü bir internet protokolü olan **Internet Relay Chat (IRC)** için **C++98 standardına** uygun olarak geliştirilmiş, tam özellikli, çok istemcili bir sunucudur. Bu proje, kullanıcıların genel kanallara katılabileceği ve özel mesajlar alışverişinde bulunabileceği gerçek zamanlı, metin tabanlı iletişimi mümkün kılmayı amaçlamaktadır.
-
-Bu çalışma, C++98 kısıtlamaları dahilinde **ağ programlama**, **eş zamanlı istemci yönetimi** ve **protokol uygulama** yetkinliğimi derinleştirmeye odaklanmıştır.
+<img width="500" height="400" alt="Screenshot from 2025-10-29 18-17-15" src="https://github.com/user-attachments/assets/f40802a3-c5a7-44d9-8ca7-ae92c046e97d" />
+<img width="500" height="400" alt="Screenshot from 2025-10-29 18-28-23" src="https://github.com/user-attachments/assets/5469eade-f62f-4b75-b272-5ce130bf16bc" />
 
 ---
 
-## 🚀 Özellikler ve Uygulama
-
-Sunucu, standart IRC istemcileriyle (referans istemci olarak seçilen **HexChat** dahil) uyumlu olacak şekilde tasarlanmıştır ve temel kullanıcı etkileşiminden gelişmiş kanal yönetimine kadar bir dizi zorunlu IRC komutunu destekler:
-
-### 👤 Kullanıcı ve Temel İletişim
+## 👤 Kullanıcı ve Temel İletişim
 
 * **Bağlantı ve Kimlik Doğrulama:** Gerekli bir parola ile bağlantı kurma (`PASS`), takma ad (`NICK`) ve kullanıcı adı (`USER`) belirleme.
 * **Kanal Katılımı:** Kullanıcıların kanallara katılmasına izin verme (`JOIN`).
 * **Mesajlaşma:** Hem kanallara hem de özel kullanıcılara mesaj gönderme ve alma (`PRIVMSG`).
-* **Eş Zamanlı İstemci Yönetimi:** Sunucu, **engelleyici olmayan (non-blocking) G/Ç işlemleri** kullanarak **aynı anda birden fazla istemciyi** yönetme kapasitesine sahiptir. Bu, sistem kaynaklarını verimli kullanmak için tek bir `poll()` (veya eşdeğeri, örn. `select()`) çağrısı kullanılarak tüm okuma, yazma ve dinleme işlemlerinin yönetilmesiyle sağlanır.
+* **Eş Zamanlı Client Yönetimi:** Server, **engelleyici olmayan (non-blocking) G/Ç işlemleri** kullanarak **aynı anda birden fazla istemciyi** yönetme kapasitesine sahiptir. Bu, sistem kaynaklarını verimli kullanmak için tek bir `poll()` çağrısı kullanılarak tüm okuma, yazma ve dinleme işlemlerinin yönetilmesiyle sağlanır.
 
-### 👑 Operatör Komutları ve Kanal Yönetimi
+---
+
+## 👑 Operatör Komutları ve Kanal Yönetimi
 
 Kanal operatörleri, kanallarını yönetmek ve düzenlemek için özel komut yetkilerine sahiptir:
 
-* **`KICK`**: Bir istemciyi kanaldan atma.
-* **`INVITE`**: Bir istemciyi kanala davet etme.
+* **`KICK`**: Bir client'ı kanaldan atma.
+* **`INVITE`**: Bir client'ı kanala davet etme.
 * **`TOPIC`**: Kanalın konusunu görüntüleme veya değiştirme.
 * **`MODE`**: Kanal ayarlarını değiştirme:
     * **`i`**: **Sadece davetle girilebilen** kanal (Invite-only).
@@ -135,64 +107,7 @@ Kanal operatörleri, kanallarını yönetmek ve düzenlemek için özel komut ye
     * **`o`**: Kullanıcılara kanal **operatör yetkisi** verme/alma.
     * **`l`**: Kanaldaki **kullanıcı sayısını sınırlandırma** (user limit).
 
----
 
-## 🛠️ Teknik Özellikler
 
-* **Dil ve Standart:** C++98
-* **Ortam:** Linux/Unix benzeri işletim sistemleri. (macOS'ta `fcntl` kullanımı, yalnızca dosya tanımlayıcılarını non-blocking moda ayarlamak için sınırlı olarak izin verilmiştir.)
-* **Ağ İletişimi:** TCP/IP (v4 veya v6)
-* **G/Ç Yönetimi:** Tüm G/Ç (Okuma, Yazma, Dinleme) işlemleri **engelleyici olmamalıdır** ve **tek bir `poll()` veya eşdeğer bir mekanizma** ile yönetilmelidir. **Forking (çatallanma) kesinlikle yasaktır.**
-* **Yetkili Fonksiyonlar:** Uygulama, yalnızca izin verilen sistem çağrılarına (örneğin, `socket`, `bind`, `listen`, `accept`, `send`, `recv`, `poll`, `signal` ve ilgili ağ adresi manipülasyonu fonksiyonları) dayanmaktadır.
 
-### 🖥️ Referans İstemci
 
-Sunucunun işlevselliği, yaygın olarak kullanılan modern bir IRC istemcisi kullanılarak doğrulanmaktadır.
-
-> **Referans İstemci:** **HexChat**
-
----
-
-## ⚙️ Kullanım
-
-ft\_irc sunucusu, iki zorunlu argümanla çalıştırılır: dinleme portu ve bağlantı parolası.
-
-1.  **Depoyu Klonlayın:**
-
-    ```bash
-    git clone [https://github.com/fbkeskin/ft_irc.git](https://github.com/fbkeskin/ft_irc.git)
-    cd ft_irc
-    ```
-
-2.  **Derleme:**
-
-    Sunucuyu derlemek için sağlanan `Makefile`'ı kullanın.
-
-    ```bash
-    make
-    ```
-
-    > Bu komut, `ircserv` adlı yürütülebilir dosyayı oluşturacaktır.
-
-3.  **Sunucuyu Başlatma:**
-
-    Aşağıdaki formatta bir port numarası ve parola ile sunucuyu çalıştırın:
-
-    ```bash
-    ./ircserv <port> <parola>
-    # Örnek:
-    ./ircserv 6667 GizliParolam123
-    ```
-
-### 🤝 HexChat ile Bağlanma
-
-Sunucu çalışmaya başladıktan sonra, **HexChat** referans istemcisini kullanarak bağlantı kurabilirsiniz:
-
-* **Sunucu/Ağ:** Yeni bir ağ ekleyin.
-* **Adres:** `127.0.0.1` (veya sunucunun çalıştığı makinenin IP adresi)
-* **Port:** Başlangıçta kullanılan port (örn. `6667`).
-* **Parola:** Başlangıçta kullanılan parola.
-
-Bağlantı kurulduktan sonra, istemci IRC protokolüne uygun olarak **`PASS`**, **`NICK`** ve **`USER`** komutlarını otomatik veya manuel olarak gönderecektir.
-
----
