@@ -1,11 +1,17 @@
 <div align="center">
-	<h1>💬 Internet Relay Chat, ft_irc 💬</h1>
+	<h1>💬 Internet Relay Chat, ft_irc </h1>
   "This project is about creating your own IRC server.
 You will use an actual IRC client to connect to your server and test it.
 The Internet is governed by solid standard protocols that allow connected computers to
 interact with each other.
 It’s always beneficial to understand these protocols."
-  <br>   <br>
+<br> <br>  
+	
+
+
+https://github.com/user-attachments/assets/a4d569b8-7e75-4b5c-bb57-5d2844637aef
+
+
   
   <p align="center">
 	<h4>My first own IRC Server!<br>
